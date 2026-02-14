@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Mission Saint-Valentin</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  text-align: center;
+  color: white;
+}
+
+.container {
+  max-width: 600px;
+}
+
+button {
+  padding: 15px 30px;
+  margin: 15px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#yes {
+  background-color: #ff2e63;
+  color: white;
+}
+
+#no {
+  background-color: #444;
+  color: white;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.fade {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+</style>
+</head>
+<body>
+
+<div class="container fade">
+  <h1 id="question">Veux-tu être MA Valentine ? ❤️</h1>
+  <div id="buttons">
+    <button id="yes">Oui</button>
+    <button id="no">Non</button>
+  </div>
+</div>
+
+<script>
+const questions = [
+  "Veux-tu être MA Valentine ? (essaye de cliquer sur non stp) ❤️",
+  "Tout nu ? 😏",
+  "Tu me présenteras Zouzi la prochaine fois ? 🦓",
+  "Je t'aime beaucoup ET TOI ? ❤️",
+  "On mange ce soir! (tu ne peux toujours pas cliquer sur non hehe) 🍔🍣",
+  "Envoie-moi ta commande vite !!!"
+];
+
+let current = 0;
+
+const questionEl = document.getElementById("question");
+const yesBtn = document.getElementById("yes");
+const noBtn = document.getElementById("no");
+
+yesBtn.addEventListener("click", () => {
+  current++;
+  if (current < questions.length) {
+    questionEl.innerText = questions[current];
+  } else {
+    document.querySelector(".container").innerHTML =
+      "<h1>Distance ou pas... je te choisirais toujours toi ❤️✨</h1>";
+  }
+});
+
+noBtn.addEventListener("click", () => {
+  noBtn.style.position = "absolute";
+  noBtn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+  noBtn.style.top = Math.random() * (window.innerHeight - 50) + "px";
+});
+</script>
+
+</body>
+</html>
